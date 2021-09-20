@@ -19,3 +19,6 @@ an operating system for ARMv7l architechture, or, more specifically, the raspber
 
  * **____:**  
     `name:` labels the next line `name`
+
+ * **b**  
+    `b label` causes the program to be execute line `label`.
