@@ -1,4 +1,4 @@
-.section .init /*Tells the assembler where to put our code*/
+.section .init /*Tells the linker where to put our code (the linker links together the assembly files)*/
 .globl _start /*stops a warning message from appearing*/
 _start: /*stops a warning message from appearing*/
 ldr r0,=0x20200000 /*inserts the value 0x20200000 (the address of the GPIO controller) into register 0*/
