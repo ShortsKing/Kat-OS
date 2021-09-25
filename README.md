@@ -6,13 +6,16 @@ installation is done through 2 steps: Building, and Installing
 ### Building
 In lx_terminal enter the following commands:
 ```
-arm-none-eabi-as main.s -o main.o
-arm-none-eabi-ld --no-undefined main.o -o output.elf -T kernel.ld
-arm-none-eabi-objcopy output.elf -O binary kernel.img
+make
 ```
 
 ### Installing
-Partition the SD card into 2 Partitions: `boot` and `----`. Copy the file `kernel.img` into the 'boot' partition.
+In lx_terminal enter the following commands:
+```
+# mount /dev/sda1 /mnt
+# cp blink.img /mnt/kernel.img
+# umount /mnt
+```
 
 ## What is Happening When the OS is Run?
 1. The BMC2835 SOC (specifically, the VideoCore IV GPU in it) loads the stage 1 boot loader from an on-chip ROM
