@@ -2,7 +2,7 @@
 an operating system for ARMv7l architechture, or, more specifically, the raspberry pi. for contributers, it is required that you place a comment on every line of code, so that we know what is happening.
 
 ## Sources
- * [Baking Pi OS Tutorial](https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/index.html) (as it turns out, this source has been proven to be inaccurate, thus i am instead copying RISC OS)
+ * [Programming the BMC2835 SOC](https://www.glennklockwood.com/embedded/bmc2835-gpio.html)
 
 ## Assembly Commands Learned:
  * **ldr**  
