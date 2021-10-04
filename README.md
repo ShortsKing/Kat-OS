@@ -49,3 +49,6 @@ In lx_terminal enter the following commands:
 
  * **sub**
     `sub reg,#val` subtracts the number `val` from the value in `reg`.
+
+ * **add**
+    'add reg,#val' adds the number 'val' to the value in 'reg'
