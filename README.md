@@ -29,87 +29,95 @@ In lx_terminal enter the following commands:
  * [Raspberry Pi 0 Specs](https://cdn.sparkfun.com/assets/learn_tutorials/6/7/6/PiZero_1.pdf)
 
 ## Assembly Commands Learned:
- * **ldr**  
+* **ldr**  
     `ldr reg, =val` put the number `val` in the register `reg`
 
- * **mov**  
+* **mov**  
       `mov reg,#val` moves the number 'val' into the register named 'reg'.
       
- * **lsl**  
+* **lsl**  
       `lsl reg,#val` shifts the binary representation of the number in 'reg' by 'val' places to the left.
  
- * **str**  
+* **str**  
     `str reg,[dest,#val]` stores the number in `reg` at the address given by `dest + val`.
 
- * **____:**  
+* **____:**  
     `name:` labels the next line `name`
 
- * **b**  
+* **b**  
     `b label` causes the program to be execute line `label`.
 
- * **sub**
+* **sub**
     `sub reg,#val` subtracts the number `val` from the value in `reg`.
 
- * **add**
+* **add**
     'add reg,#val' adds the number 'val' to the value in 'reg'
-*ldr reg,=val puts the number val into the register named reg.
 
-*mov reg,#val puts the number val into the register named reg.
+* **mov** 
+     reg,#val puts the number val into the register named reg.
 
-*lsl reg,#val shifts the binary representation of the number in reg by val places to the left.
+* **name:** 
+     'labels the next line name.'
 
-*str reg,[dest,#val] stores the number in reg at the address given by dest + val.
+* **b label** 
+     'causes the next line to be executed to be label.'
 
-*name: labels the next line name.
+* **cmp** 
+    'reg,#val compares the value in reg with the number val.'
 
-*b label causes the next line to be executed to be label.
+* **Suffix ne** 
+    'causes the command to be executed only if the last comparison determined that the numbers were not equal.'
 
-*sub reg,#val subtracts the number val from the value in reg.
+* **.globl lbl** 
+    'makes the label lbl accessible from other files.'
 
-*cmp reg,#val compares the value in reg with the number val.
+* **Suffix ls**
+    'causes the command to be executed only if the last comparison determined that the first number was less than or the same as the second. Unsigned.'
 
-*Suffix ne causes the command to be executed only if the last comparison determined that the numbers were not equal.
+* **Suffix hi**
+    'causes the command to be executed only if the last comparison determined that the first number was higher than the second. Unsigned.'
 
-*.globl lbl makes the label lbl accessible from other files.
+* **push**
+    '{reg1,reg2,...} copies the registers in the list reg1,reg2,... onto the top of the stack. Only general purpose registers and lr can be pushed.'
 
-*mov reg1,reg2 copies the value in reg2 into reg1.
+* **bl lbl**
+    'sets lr to the address of the next instruction and then branches to the label lbl.'
 
-*Suffix ls causes the command to be executed only if the last comparison determined that the first number was less than or the same as the second. Unsigned.
+* **Argument shift**
+    'reg,lsl #val shifts the binary representation of the number in reg left by val before using it in the operation before.'
 
-*Suffix hi causes the command to be executed only if the last comparison determined that the first number was higher than the second. Unsigned.
+* **pop** 
+    '{reg1,reg2,...} copies the values from the top of the stack into the register list reg1,reg2,.... Only general purpose registers and pc can be popped.'
 
-*push {reg1,reg2,...} copies the registers in the list reg1,reg2,... onto the top of the stack. Only general purpose registers and lr can be pushed.
+* **alias .req**
+    'reg sets alias to mean the register reg.'
 
-*bl lbl sets lr to the address of the next instruction and then branches to the label lbl.
+* **.unreq alias**
+    'removes the alias alias.'
 
-*add reg,#val adds the number val to the contents of the register reg.
+* **lsr** 
+    'dst,src,#val shifts the binary representation of the number in src right by val, but stores the result in dst.'
 
-*Argument shift reg,lsl #val shifts the binary representation of the number in reg left by val before using it in the operation before.
+* **and** 
+    'reg,#val computes the Boolean and function of the number in reg with val.'
 
-*lsl reg,amt shifts the binary representation of the number in reg left by the number in amt.
+* **teq** 
+    'reg,#val checks if the number in reg is equal to val.'
 
-*str reg,[dst] is the same as str reg,[dst,#0].
+* **ldrd** 
+    'regLow,regHigh,[src,#val] loads 8 bytes from the address given by the number in src plus val into regLow and regHigh.'
 
-*pop {reg1,reg2,...} copies the values from the top of the stack into the register list reg1,reg2,.... Only general purpose registers and pc can be popped.
+* **.align num**
+    'ensures the address of the next line is a multiple of 2num.'
 
-*alias .req reg sets alias to mean the register reg.
+* **.int val**
+    'outputs the number val.'
 
-*.unreq alias removes the alias alias.
+* **tst** 
+    'reg,#val computes and reg,#val and compares the result with 0.'
 
-*lsr dst,src,#val shifts the binary representation of the number in src right by val, but stores the result in dst.
+* **mla** 
+    'dst,reg1,reg2,reg3 multiplies the values from reg1 and reg2, adds the value from reg3 and places the least significant 32 bits of the result in dst.'
 
-*and reg,#val computes the Boolean and function of the number in reg with val.
-
-*teq reg,#val checks if the number in reg is equal to val.
-
-*ldrd regLow,regHigh,[src,#val] loads 8 bytes from the address given by the number in src plus val into regLow and regHigh.
-
-*.align num ensures the address of the next line is a multiple of 2num.
-
-*.int val outputs the number val.
-
-*tst reg,#val computes and reg,#val and compares the result with 0.
-
-*mla dst,reg1,reg2,reg3 multiplies the values from reg1 and reg2, adds the value from reg3 and places the least significant 32 bits of the result in dst.
-
-*strh reg,[dest] stores the low half word number in reg at the address given by dest.
+* **strh** 
+    'reg,[dest] stores the low half word number in reg at the address given by dest.'
