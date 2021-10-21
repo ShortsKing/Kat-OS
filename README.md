@@ -57,10 +57,7 @@ In lx_terminal enter the following commands:
      reg,#val puts the number val into the register named reg.
 
 * **name:** 
-     'labels the next line name.'
-
-* **b label** 
-     'causes the next line to be executed to be label.'
+     'labels the next line name.'0
 
 * **cmp** 
     'reg,#val compares the value in reg with the number val.'
