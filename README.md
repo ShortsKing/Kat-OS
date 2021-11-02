@@ -1,21 +1,26 @@
 # Oexis-OS
 an operating system for ARMv7l architechture, or, more specifically, the raspberry pi. for contributers, it is required that you place a comment on every line of code, so that we know what is happening.
 
+## File Structure
+The file structure for this project looks like this:
+.
+├── build
+├── kernel.ld
+├── Makefile
+└── source
+    └── main.s
+
 ## Installing on Micro SD Card
 installation is done through 2 steps: Building, and Installing
+
 ### Building
-In lx_terminal enter the following commands:
+In lx_terminal enter the project root dircetory and type the following command:
 ```
 make
 ```
 
 ### Installing
-In lx_terminal enter the following commands:
-```
-# mount /dev/sda1 /mnt
-# cp blink.img /mnt/kernel.img
-# umount /mnt
-```
+Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kernel.img on the sd card as well.
 
 ## What is Happening When the OS is Run?
 1. The BMC2835 SOC (specifically, the VideoCore IV GPU in it) loads the stage 1 boot loader from an on-chip ROM
