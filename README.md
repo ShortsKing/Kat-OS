@@ -2,13 +2,13 @@
 an operating system for ARMv7l architechture, or, more specifically, the raspberry pi. for contributers, it is required that you place a comment on every line of code, so that we know what is happening.
 
 ## File Structure
-The file structure for this project looks like this:
-.
-├── build
-├── kernel.ld
-├── Makefile
-└── source
-    └── main.s
+The file structure for this project looks like this: <br>
+.<br>
+├── build<br>
+├── kernel.ld<br>
+├── Makefile<br>
+└── source<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── main.s
 
 ## Installing on Micro SD Card
 installation is done through 2 steps: Building, and Installing
