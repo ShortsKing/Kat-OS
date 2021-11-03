@@ -60,34 +60,34 @@ Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kerne
     `add reg,#val` adds the number `val` to the value in `reg`
 
 * **mov**  
-     reg,#val puts the number val into the register named reg.
+     `mov reg,#val` puts the number `val` into the register named `reg`.
 
 * **name:**  
-     'labels the next line name.'0
+     `name:` labels the next line `name`.
 
 * **cmp**  
-    'reg,#val compares the value in reg with the number val.'
+    `cmp reg,#val` compares the value in `reg` with the number `val`.
 
 * **Suffix ne**  
-    'causes the command to be executed only if the last comparison determined that the numbers were not equal.'
+    causes the command to be executed only if the last comparison determined that the numbers were not equal.
 
-* **.globl lbl**  
-    'makes the label lbl accessible from other files.'
+* **.globl**  
+    `.globl lbl` makes the label `lbl` accessible from other files.
 
 * **Suffix ls**  
-    'causes the command to be executed only if the last comparison determined that the first number was less than or the same as the second. Unsigned.'
+    causes the command to be executed only if the last comparison determined that the first number was less than or the same as the second. Unsigned.
 
 * **Suffix hi**  
-    'causes the command to be executed only if the last comparison determined that the first number was higher than the second. Unsigned.'
+    causes the command to be executed only if the last comparison determined that the first number was higher than the second. Unsigned.
 
 * **push**  
-    '{reg1,reg2,...} copies the registers in the list reg1,reg2,... onto the top of the stack. Only general purpose registers and lr can be pushed.'
+    `push {reg1,reg2,...}` copies the registers in the list `reg1,reg2,...` onto the top of the stack. Only general purpose registers and `lr` can be pushed.
 
 * **bl lbl**  
-    'sets lr to the address of the next instruction and then branches to the label lbl.'
+    sets `lr` to the address of the next instruction and then branches to the label `lbl`.
 
 * **Argument shift**  
-    'reg,lsl #val shifts the binary representation of the number in reg left by val before using it in the operation before.'
+    `reg,lsl #val shifts the binary representation of the number in reg left by val before using it in the operation before.'
 
 * **pop**  
     '{reg1,reg2,...} copies the values from the top of the stack into the register list reg1,reg2,.... Only general purpose registers and pc can be popped.'
