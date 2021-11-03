@@ -1,5 +1,5 @@
 # Oexis-OS
-![Version](https://img.shields.io/badge/Version-OK05-blue)<br>
+![Version][OK05]<br>
 an operating system for ARMv7l architechture, or, more specifically, the raspberry pi. for contributers, it is required that you place a comment on every line of code, so that we know what is happening.
 
 ## File Structure
@@ -127,3 +127,14 @@ Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kerne
 
 
 
+[OK01]: https://img.shields.io/badge/Version-OK01-blue
+[OK02]: https://img.shields.io/badge/Version-OK02-blue
+[OK03]: https://img.shields.io/badge/Version-OK03-blue
+[OK04]: https://img.shields.io/badge/Version-OK04-blue
+[OK05]: https://img.shields.io/badge/Version-OK05-blue
+[Screen01]: https://img.shields.io/badge/Version-Screen01-blue
+[Screen02]: https://img.shields.io/badge/Version-Screen02-blue
+[Screen03]: https://img.shields.io/badge/Version-Screen03-blue
+[Screen04]: https://img.shields.io/badge/Version-Screen04-blue
+[Input01]: https://img.shields.io/badge/Version-Input01-blue
+[Input02]: https://img.shields.io/badge/Version-Input02-blue
