@@ -33,6 +33,8 @@ Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kerne
  * [Programming the BMC2835 SOC](https://www.glennklockwood.com/embedded/bmc2835-gpio.html)
  * [BMC2835 Datasheet](https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals.pdf)
  * [Raspberry Pi 0 Specs](https://cdn.sparkfun.com/assets/learn_tutorials/6/7/6/PiZero_1.pdf)
+ * [Baking Pi - Operating Systems Development](https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/downloads.html)
+ * [ARM reference](https://www.keil.com/support/man/docs/armasm/armasm_dom1361289850039.htm)
 
 ## Assembly Commands Learned:
 * **ldr**  
@@ -83,26 +85,26 @@ Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kerne
 * **push**  
     `push {reg1,reg2,...}` copies the registers in the list `reg1,reg2,...` onto the top of the stack. Only general purpose registers and `lr` can be pushed.
 
-* **bl lbl**  
-    sets `lr` to the address of the next instruction and then branches to the label `lbl`.
+* **bl**  
+    `bl lbl` sets `lr` to the address of the next instruction and then branches to the label `lbl`.
 
 * **Argument shift**  
-    `reg,lsl #val shifts the binary representation of the number in reg left by val before using it in the operation before.'
+    `reg,lsl #val` shifts the binary representation of the number in `reg` left by `val` before using it in the operation before.'
 
 * **pop**  
-    '{reg1,reg2,...} copies the values from the top of the stack into the register list reg1,reg2,.... Only general purpose registers and pc can be popped.'
+    `{reg1,reg2,...}` copies the values from the top of the stack into the register list `reg1,reg2,...` Only general purpose registers and pc can be popped.
 
-* **alias .req**  
-    'reg sets alias to mean the register reg.'
+* **.req**  
+    `alias .req reg` sets `alias` to mean the register `reg`.
 
 * **.unreq alias**  
-    'removes the alias alias.'
+    `.unreq alias` removes the alias `alias`.
 
 * **lsr**  
-    'dst,src,#val shifts the binary representation of the number in src right by val, but stores the result in dst.'
+    `lsr dst,src,#val` shifts the binary representation of the number in `src` right by `val`, but stores the result in `dst`.
 
 * **and**  
-    'reg,#val computes the Boolean and function of the number in reg with val.'
+    reg,#val computes the Boolean and function of the number in reg with val.'
 
 * **teq**  
     'reg,#val checks if the number in reg is equal to val.'
