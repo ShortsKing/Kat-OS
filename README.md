@@ -1,4 +1,5 @@
 # Oexis-OS
+###### Current Version: OK05
 an operating system for ARMv7l architechture, or, more specifically, the raspberry pi. for contributers, it is required that you place a comment on every line of code, so that we know what is happening.
 
 ## File Structure
@@ -123,3 +124,6 @@ Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kerne
 
 * **strh**  
     `reg,[dest]` stores the low half word number in reg at the address given by dest.
+
+
+
