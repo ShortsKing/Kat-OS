@@ -52,74 +52,74 @@ Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kerne
 * **b**  
     `b label` causes the program to be execute line `label`.
 
-* **sub**
+* **sub**  
     `sub reg,#val` subtracts the number `val` from the value in `reg`.
 
 * **add**
-    'add reg,#val' adds the number 'val' to the value in 'reg'
+    `add reg,#val` adds the number `val` to the value in `reg`
 
-* **mov** 
+* **mov**  
      reg,#val puts the number val into the register named reg.
 
-* **name:** 
+* **name:**  
      'labels the next line name.'0
 
-* **cmp** 
+* **cmp**  
     'reg,#val compares the value in reg with the number val.'
 
-* **Suffix ne** 
+* **Suffix ne**  
     'causes the command to be executed only if the last comparison determined that the numbers were not equal.'
 
-* **.globl lbl** 
+* **.globl lbl**  
     'makes the label lbl accessible from other files.'
 
-* **Suffix ls**
+* **Suffix ls**  
     'causes the command to be executed only if the last comparison determined that the first number was less than or the same as the second. Unsigned.'
 
-* **Suffix hi**
+* **Suffix hi**  
     'causes the command to be executed only if the last comparison determined that the first number was higher than the second. Unsigned.'
 
-* **push**
+* **push**  
     '{reg1,reg2,...} copies the registers in the list reg1,reg2,... onto the top of the stack. Only general purpose registers and lr can be pushed.'
 
-* **bl lbl**
+* **bl lbl**  
     'sets lr to the address of the next instruction and then branches to the label lbl.'
 
-* **Argument shift**
+* **Argument shift**  
     'reg,lsl #val shifts the binary representation of the number in reg left by val before using it in the operation before.'
 
-* **pop** 
+* **pop**  
     '{reg1,reg2,...} copies the values from the top of the stack into the register list reg1,reg2,.... Only general purpose registers and pc can be popped.'
 
-* **alias .req**
+* **alias .req**  
     'reg sets alias to mean the register reg.'
 
-* **.unreq alias**
+* **.unreq alias**  
     'removes the alias alias.'
 
-* **lsr** 
+* **lsr**  
     'dst,src,#val shifts the binary representation of the number in src right by val, but stores the result in dst.'
 
-* **and** 
+* **and**  
     'reg,#val computes the Boolean and function of the number in reg with val.'
 
-* **teq** 
+* **teq**  
     'reg,#val checks if the number in reg is equal to val.'
 
-* **ldrd** 
+* **ldrd**  
     'regLow,regHigh,[src,#val] loads 8 bytes from the address given by the number in src plus val into regLow and regHigh.'
 
-* **.align num**
+* **.align num**  
     'ensures the address of the next line is a multiple of 2num.'
 
-* **.int val**
+* **.int val**  
     'outputs the number val.'
 
-* **tst** 
+* **tst**  
     'reg,#val computes and reg,#val and compares the result with 0.'
 
-* **mla** 
-    'dst,reg1,reg2,reg3 multiplies the values from reg1 and reg2, adds the value from reg3 and places the least significant 32 bits of the result in dst.'
+* **mla**  
+    `dst,reg1,reg2,reg3` multiplies the values from `reg1` and `reg2`, adds the value from `reg3` and places the least significant 32 bits of the result in `dst`.
 
-* **strh** 
-    'reg,[dest] stores the low half word number in reg at the address given by dest.'
+* **strh**  
+    `reg,[dest]` stores the low half word number in reg at the address given by dest.
