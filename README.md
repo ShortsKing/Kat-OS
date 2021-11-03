@@ -4,7 +4,7 @@ an operating system for ARMv7l architechture, or, more specifically, the raspber
 
 ## File Structure
 The file structure for this project looks like this: <br>
-.<br>
+&nbsp;.<br>
 ├── build<br>
 ├── kernel.ld<br>
 ├── Makefile<br>
