@@ -9,7 +9,9 @@ The file structure for this project looks like this: <br>
 ├── kernel.ld<br>
 ├── Makefile<br>
 └── source<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── main.s
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── main.s  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── ____.s  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── ...  
 
 ## Installing on Micro SD Card
 installation is done through 2 steps: Building, and Installing
