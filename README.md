@@ -129,9 +129,9 @@ Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kerne
 * **strh**  
     `reg,[dest]` stores the low half word number in reg at the address given by dest.
 
-## Goals:
- * Follow Screen Tutorial and test to see if it actually works
- * keep programming!
+## Next Steps:
+ * Follow Screen Tutorial and test to see if it actually works - Joseph
+ * Look into File Managment - John
 
 [OK01]: https://img.shields.io/badge/Version-OK01-blue
 [OK02]: https://img.shields.io/badge/Version-OK02-blue
