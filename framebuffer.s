@@ -6,7 +6,7 @@ FrameBufferInfo:
 .int 768 /* #4 Physical Height */
 .int 1024 /* #8 Virtual Width */
 .int 768 /* #12 Virtual Height */
-.int 0 /* #16 GPU - Pitch */
+.int 0 /* #8 GPU - Pitch */
 .int 16 /* #20 Bit Depth */
 .int 0 /* #24 X */
 .int 0 /* #28 Y */
