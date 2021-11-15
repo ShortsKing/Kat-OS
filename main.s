@@ -167,3 +167,58 @@ and r0,mail,#0xfffffff0
 .unreq mail
 pop {pc}
 mailbox .req r0
+
+.section .text
+.globl InitialiseFrameBuffer
+InitialiseFrameBuffer:
+width .req r0
+height .req r1
+bitDepth .req r2
+cmp width,#4096
+cmpls height,#4096
+cmpls bitDepth,#32
+result .req r0
+movhi result,#0
+movhi pc,lr
+
+/*This code checks that the width and height are less than or equal to 4096, and that the bit depth is less than or equal to
+32. This is once again using a trick with conditional execution. Convince yourself that this works.*/
+
+fbInfoAddr .req r3
+push {lr}
+ldr fbInfoAddr,=FrameBufferInfo
+str width,[fbInfoAddr,#0]
+str height,[fbInfoAddr,#4]
+str width,[fbInfoAddr,#8]
+str height,[fbInfoAddr,#12]
+str bitDepth,[fbInfoAddr,#20]
+.unreq width
+.unreq height
+.unreq bitDepth
+
+/*This code simply writes into our frame buffer structure defined above. I also take the opportunity to push the link register onto the stack.*/
+
+mov r0,fbInfoAddr
+add r0,#0x40000000
+mov r1,#1
+bl MailboxWrite
+
+/*The inputs to the MailboxWrite method are the value to write in r0, and the channel to write to in r1.*/
+
+mov r0,#1
+bl MailboxRead
+
+*/The inputs to the MailboxRead method is the channel to write to in r0, and the output is the value read.*/
+
+teq result,#0
+movne result,#0
+popne {pc}
+
+/*This code checks if the result of the MailboxRead method is 0, and returns 0 if not.*/
+
+mov result,fbInfoAddr
+pop {pc}
+.unreq result
+.unreq fbInfoAddr
+
+/*This code finishes off and returns the frame buffer info address.*/
