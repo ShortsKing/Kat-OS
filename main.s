@@ -48,6 +48,13 @@ mov r1,#768
 mov r2,#16
 bl InitialiseFrameBuffer
 
+/*
+This code simply uses our InitialiseFrameBuffer method to create a frame buffer with width 1024, 
+*height 768, and bit depth 16. You can try different values in here if you wish, as long as you are consistent throughout the code. 
+*Since it's possible that this method can return 0 if the graphics processor did not give us a frame buffer, we had better check for this, 
+*and turn the OK LED on if it happens.
+*/
+
 teq r0,#0
 bne noError$
 
@@ -64,6 +71,13 @@ b error$
 noError$:
 fbInfoAddr .req r4
 mov fbInfoAddr,r0
+
+/*
+*Now that we have the frame buffer info address, we need to get the frame buffer pointer from it, 
+*and start drawing to the screen. We will do this using two loops, one going down the rows, and one going along the columns. 
+*On the Raspberry Pi, indeed in most applications, pictures are stored left to right then top to bottom, 
+*so we have to do the loops in the order I have said.
+*/
 
 render$:
 fbAddr .req r3
@@ -92,72 +106,13 @@ b render$
 .unreq fbAddr
 .unreq fbInfoAddr
 
-.globl GetMailboxBase
-GetMailboxBase:
-ldr r0,=0x2000B880
-mov pc,lr
+/*
+*This is quite a large chunk of code, and has a loop within a loop within a loop. 
+*To help get your head around the looping, I've indented the code which is looped, depending on which loop it is in. 
+*This is quite common in most high level programming languages, and the assembler simply ignores the tabs. 
+*We see here that I load in the frame buffer address from the frame buffer information structure, and then loop over every row, 
+*then every pixel on the row. At each pixel, I use an strh (store half word) command to store the current colour, 
+*then increment the address we're writing to. After drawing each row, we increment the colour that we are drawing. 
+*After drawing the full screen, we branch back to the beginning.
+*/
 
-.globl MailboxWrite
-MailboxWrite:
-tst r0,#0b1111
-movne pc,lr
-cmp r1,#15
-movhi pc,lr
-
-channel .req r1
-value .req r2
-mov value,r0
-push {lr}
-bl GetMailboxBase
-mailbox .req r0
-
-wait1$:
-status .req r3
-ldr status,[mailbox,#0x18]
-
-tst status,#0x80000000
-.unreq status
-bne wait1$
-
-add value,channel
-.unreq channel
-
-str value,[mailbox,#0x20]
-.unreq value
-.unreq mailbox
-pop {pc}
-
-.globl MailboxRead
-MailboxRead:
-cmp r0,#15
-movhi pc,lr
-
-channel .req r1
-mov channel,r0
-push {lr}
-bl GetMailboxBase
-mailbox .req r0
-
-rightmail$:
-wait2$:
-status .req r2
-ldr status,[mailbox,#0x18]
-
-tst status,#0x40000000
-.unreq status
-bne wait2$
-
-mail .req r2
-ldr mail,[mailbox,#0]
-
-inchan .req r3
-and inchan,mail,#0b1111
-teq inchan,channel
-.unreq inchan
-bne rightmail$
-.unreq mailbox
-.unreq channel
-
-and r0,mail,#0xfffffff0
-.unreq mail
-pop {pc}
