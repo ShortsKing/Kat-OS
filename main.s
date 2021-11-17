@@ -43,134 +43,6 @@ main:
 */
 mov sp,#0x8000
 
-mov r0,#1024
-mov r1,#768
-mov r2,#16
-bl InitialiseFrameBuffer
-
-/*
-*This code simply uses our InitialiseFrameBuffer method to create a frame buffer with width 1024, 
-*height 768, and bit depth 16. You can try different values in here if you wish, as long as you are consistent throughout the code. 
-*Since it's possible that this method can return 0 if the graphics processor did not give us a frame buffer, we had better check for this, 
-*and turn the OK LED on if it happens.
-*/
-
-teq r0,#0
-bne noError$
-
-mov r0,#16
-mov r1,#1
-bl SetGpioFunction
-mov r0,#16
-mov r1,#0
-bl SetGpio
-
-error$:
-b error$
-
-noError$:
-fbInfoAddr .req r4
-mov fbInfoAddr,r0
-
-/*
-*Now that we have the frame buffer info address, we need to get the frame buffer pointer from it, 
-*and start drawing to the screen. We will do this using two loops, one going down the rows, and one going along the columns. 
-*On the Raspberry Pi, indeed in most applications, pictures are stored left to right then top to bottom, 
-*so we have to do the loops in the order I have said.
-*/
-
-render$:
-fbAddr .req r3
-ldr fbAddr,[fbInfoAddr,#32]
-
-colour .req r0
-y .req r1
-mov y,#768
-drawRow$:
-x .req r2
-mov x,#1024
-drawPixel$:
-strh colour,[fbAddr]
-add fbAddr,#2
-sub x,#1
-teq x,#0
-bne drawPixel$
-
-sub y,#1
-add colour,#1
-teq y,#0
-bne drawRow$
-
-b render$
-
-.unreq fbAddr
-.unreq fbInfoAddr
-
-/*
-*This is quite a large chunk of code, and has a loop within a loop within a loop. To help get your head around the looping, 
-*I've indented the code which is looped, depending on which loop it is in. This is quite common in most high level programming languages, 
-*and the assembler simply ignores the tabs. We see here that I load in the frame buffer address from the frame buffer information structure, 
-*and then loop over every row, then every pixel on the row. At each pixel, I use an strh (store half word) command to store the current colour, 
-*then increment the address we're writing to. After drawing each row, we increment the colour that we are drawing. After drawing the full screen, 
-*we branch back to the beginning.
-*/
-
-/*
-* Use our new SetGpioFunction function to set the function of GPIO port 16 (OK 
-* LED) to 001 (binary)
-*/
-mov r0,#16
-mov r1,#1
-bl SetGpioFunction
-
-/* NEW
-* Load in the pattern to flash and also store our position in the flash
-* sequence.
-*/
-ptrn .req r4
-ldr ptrn,=pattern
-ldr ptrn,[ptrn]
-seq .req r5
-mov seq,#0
-
-loop$:
-
-/* NEW
-* Use our new SetGpio function to set GPIO 16 base on the current bit in the 
-* pattern causing the LED to turn on if the pattern contains 0, and off if it
-* contains 1.
-*/
-mov r0,#16
-mov r1,#1
-lsl r1,seq
-and r1,ptrn
-bl SetGpio
-
-/* NEW
-* We wait for 0.25s using our wait method.
-*/
-ldr r0,=250000
-bl Wait
-
-/* NEW
-* Loop over this process forevermore, incrementing the sequence counter.
-* When it reaches 32, its bit pattern becomes 100000, and so anding it with 
-* 11111 causes it to return to 0, but has no effect on all patterns less than
-* 32.
-*/
-add seq,#1
-and seq,#0b11111
-b loop$
-
-/* NEW
-* In the data section of the kernel image, store the pattern we wish to flash
-* on the LED.
-*/
-.section .data
-.align 2
-pattern:
-.int 0b11111111101010100010001000101010
-
 .globl GetMailboxBase
 GetMailboxBase:
 ldr r0,=0x2000B880
@@ -181,6 +53,7 @@ MailboxWrite:
 tst r0,#0b1111
 movne pc,lr
 cmp r1,#15
+movhi pc,lr
 
 channel .req r1
 value .req r2
@@ -188,7 +61,6 @@ mov value,r0
 push {lr}
 bl GetMailboxBase
 mailbox .req r0
-movhi pc,lr
 
 wait1$:
 status .req r3
@@ -215,6 +87,7 @@ channel .req r1
 mov channel,r0
 push {lr}
 bl GetMailboxBase
+mailbox .req r0
 
 rightmail$:
 wait2$:
@@ -239,71 +112,3 @@ bne rightmail$
 and r0,mail,#0xfffffff0
 .unreq mail
 pop {pc}
-mailbox .req r0
-
-.section .text
-.globl InitialiseFrameBuffer
-InitialiseFrameBuffer:
-width .req r0
-height .req r1
-bitDepth .req r2
-cmp width,#4096
-cmpls height,#4096
-cmpls bitDepth,#32
-result .req r0
-movhi result,#0
-movhi pc,lr
-
-/*
-*This code checks that the width and height are less than or equal to 4096, and that the bit depth is less than or equal to
-*32. This is once again using a trick with conditional execution. Convince yourself that this works.
-*/
-
-fbInfoAddr .req r3
-push {lr}
-ldr fbInfoAddr,=FrameBufferInfo
-str width,[fbInfoAddr,#0]
-str height,[fbInfoAddr,#4]
-str width,[fbInfoAddr,#8]
-str height,[fbInfoAddr,#12]
-str bitDepth,[fbInfoAddr,#20]
-.unreq width
-.unreq height
-.unreq bitDepth
-
-/*
-*This code simply writes into our frame buffer structure defined above. I also take the opportunity to push the link register onto the stack.
-*/
-
-mov r0,fbInfoAddr
-add r0,#0x40000000
-mov r1,#1
-bl MailboxWrite
-
-/*
-*The inputs to the MailboxWrite method are the value to write in r0, and the channel to write to in r1.
-*/
-
-mov r0,#1
-bl MailboxRead
-
-*/
-*The inputs to the MailboxRead method is the channel to write to in r0, and the output is the value read.
-*/
-
-teq result,#0
-movne result,#0
-popne {pc}
-
-/*
-*This code checks if the result of the MailboxRead method is 0, and returns 0 if not.
-*/
-
-mov result,fbInfoAddr
-pop {pc}
-.unreq result
-.unreq fbInfoAddr
-
-/*
-*This code finishes off and returns the frame buffer info address.
-*/
