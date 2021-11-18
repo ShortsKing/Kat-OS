@@ -2,7 +2,7 @@
 *	systemTimer.s
 *	 by Alex Chadwick
 *
-*	A sample assembly code implementation of the OK05 operating system.
+*	A sample assembly code implementation of the screen01 operating system.
 *	See main.s for details.
 *
 *	systemTime.s contains the code that interacts with the system timer.
