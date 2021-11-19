@@ -34,10 +34,11 @@ Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kerne
 ## Sources
  * [Programming the BMC2835 SOC](https://www.glennklockwood.com/embedded/bmc2835-gpio.html)
  * [BMC2835 Datasheet](https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals.pdf)
+   * Page 65 - EMMC Memory Management
+   * 
  * [Raspberry Pi 0 Specs](https://cdn.sparkfun.com/assets/learn_tutorials/6/7/6/PiZero_1.pdf)
  * [Baking Pi - Operating Systems Development](https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/downloads.html)
  * [ARM reference](https://www.keil.com/support/man/docs/armasm/armasm_dom1361289850039.htm)
- * [Raspberry Pi BCM2935 Info Page](https://www.raspberrypi.com/documentation/computers/processors.html#bcm2835)
 
 ## Assembly Commands Learned:
 * **ldr**  
