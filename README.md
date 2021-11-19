@@ -35,7 +35,10 @@ Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kerne
  * [Programming the BMC2835 SOC](https://www.glennklockwood.com/embedded/bmc2835-gpio.html)
  * [BMC2835 Datasheet](https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals.pdf)
    * Page 65 - EMMC Memory Management
-   * 
+   * Page 89 - GPIO
+   * Page 109 - Interrupts
+   * Pages 172 and 196 - Timer
+   * Page 200 - USB
  * [Raspberry Pi 0 Specs](https://cdn.sparkfun.com/assets/learn_tutorials/6/7/6/PiZero_1.pdf)
  * [Baking Pi - Operating Systems Development](https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/downloads.html)
  * [ARM reference](https://www.keil.com/support/man/docs/armasm/armasm_dom1361289850039.htm)
