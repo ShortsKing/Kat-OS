@@ -2,14 +2,14 @@
 *	mailbox.s
 *	 by Alex Chadwick
 *
-*	A sample assembly code implementation of the screen02 operating system.
+*	A sample assembly code implementation of the screen03 operating system.
 *	See main.s for details.
 *
 *	mailbox.s contains code that interacts with the mailbox for communication
 *	with various devices.
 ******************************************************************************/
 
-/* NEW
+/*
 * GetMailboxBase returns the base address of the mailbox region as a physical
 * address in register r0.
 * C++ Signature: void* GetMailboxBase()
@@ -19,7 +19,7 @@ GetMailboxBase:
 	ldr r0,=0x2000B880
 	mov pc,lr
 
-/* NEW
+/*
 * MailboxRead returns the current value in the mailbox addressed to a channel
 * given in the low 4 bits of r0, as the top 28 bits of r0.
 * C++ Signature: u32 MailboxRead(u8 channel)
@@ -45,7 +45,7 @@ MailboxRead:
 	and r0,r1,#0xfffffff0
 	mov pc,lr
 
-/* NEW
+/*
 * MailboxWrite writes the value given in the top 28 bits of r0 to the channel
 * given in the low 4 bits of r1.
 * C++ Signature: void MailboxWrite(u32 value, u8 channel)
