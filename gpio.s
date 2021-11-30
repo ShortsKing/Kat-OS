@@ -2,13 +2,13 @@
 *	gpio.s
 *	 by Alex Chadwick
 *
-*	A sample assembly code implementation of the screen02 operating system.
+*	A sample assembly code implementation of the screen03 operating system.
 *	See main.s for details.
 *
 *	gpio.s contains the rountines for manipulation of the GPIO ports.
 ******************************************************************************/
 
-/* NEW
+/*
 * According to the EABI, all method calls should use r0-r3 for passing
 * parameters, should preserve registers r4-r8,r10-r11,sp between calls, and 
 * should return values in r0 (and r1 if needed). 
@@ -18,7 +18,7 @@
 * would all work from C.
 */
 
-/* NEW
+/*
 * GetGpioAddress returns the base address of the GPIO region as a physical address
 * in register r0.
 * C++ Signature: void* GetGpioAddress()
@@ -30,7 +30,7 @@ GetGpioAddress:
 	mov pc,lr
 	.unreq gpioAddr
 
-/* NEW
+/*
 * SetGpioFunction sets the function of the GPIO register addressed by r0 to the
 * low  3 bits of r1.
 * C++ Signature: void SetGpioFunction(u32 gpioRegister, u32 function)
@@ -78,7 +78,7 @@ SetGpioFunction:
 	.unreq gpioAddr
 	pop {pc}
 
-/* NEW
+/*
 * SetGpio sets the GPIO pin addressed by register r0 high if r1 != 0 and low
 * otherwise. 
 * C++ Signature: void SetGpio(u32 gpioRegister, u32 value)
