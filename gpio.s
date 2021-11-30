@@ -2,7 +2,7 @@
 *	gpio.s
 *	 by Alex Chadwick
 *
-*	A sample assembly code implementation of the screen01 operating system.
+*	A sample assembly code implementation of the screen02 operating system.
 *	See main.s for details.
 *
 *	gpio.s contains the rountines for manipulation of the GPIO ports.
