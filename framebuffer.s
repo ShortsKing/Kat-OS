@@ -2,13 +2,13 @@
 *	frameBuffer.s
 *	 by Alex Chadwick
 *
-*	A sample assembly code implementation of the screen01 operating system.
+*	A sample assembly code implementation of the screen02 operating system.
 *	See main.s for details.
 *
 *	frameBuffer.s contains code that creates and manipulates the frame buffer.
 ******************************************************************************/
 
-/* NEW
+/* 
 * When communicating with the graphics card about frame buffers, a message 
 * consists of a pointer to the structure below. The comments explain what each
 * member of the structure is.
@@ -20,7 +20,7 @@
 *  u32 x; u32 y; void* pointer; u32 size;
 * };
 * FrameBuferDescription FrameBufferInfo =
-*		{ 1024, 768, 1024, 768, 0, 16, 0, 0, 0, 0 };
+*		{ 1024, 768, 1024, 768, 0, 24, 0, 0, 0, 0 };
 */
 .section .data
 .align 12
@@ -31,13 +31,13 @@ FrameBufferInfo:
 	.int 1024	/* #8 vWidth */
 	.int 768	/* #12 vHeight */
 	.int 0		/* #16 GPU - Pitch */
-	.int 16		/* #20 Bit Dpeth */
+	.int 24		/* #20 Bit Dpeth */
 	.int 0		/* #24 X */
 	.int 0		/* #28 Y */
 	.int 0		/* #32 GPU - Pointer */
 	.int 0		/* #36 GPU - Size */
 
-/* NEW
+/* 
 * InitialiseFrameBuffer creates a frame buffer of width and height specified in
 * r0 and r1, and bit depth specified in r2, and returns a FrameBuferDescription
 * which contains information about the frame buffer returned. This procedure 
@@ -60,8 +60,8 @@ InitialiseFrameBuffer:
 	movhi result,#0
 	movhi pc,lr
 
-	push {r4,lr}	
-	fbInfoAddr .req r4		
+	push {r4,lr}			
+	fbInfoAddr .req r4
 	ldr fbInfoAddr,=FrameBufferInfo
 	str width,[r4,#0]
 	str height,[r4,#4]
