@@ -2,7 +2,7 @@
 *	mailbox.s
 *	 by Alex Chadwick
 *
-*	A sample assembly code implementation of the screen01 operating system.
+*	A sample assembly code implementation of the screen02 operating system.
 *	See main.s for details.
 *
 *	mailbox.s contains code that interacts with the mailbox for communication
@@ -20,76 +20,49 @@ GetMailboxBase:
 	mov pc,lr
 
 /* NEW
-* MailboxWrite writes the value given in the top 28 bits of r0 to the channel
-* given in the low 4 bits of r1.
-* C++ Signature: void MailboxWrite(u32 value, u8 channel)
-*/
-.globl MailboxWrite
-MailboxWrite: 
-	tst r0,#0b1111
-	movne pc,lr
-	cmp r1,#15
-	movhi pc,lr
-
-	channel .req r1
-	value .req r2
-	mov value,r0
-	push {lr}
-	bl GetMailboxBase
-	mailbox .req r0
-		
-	wait1$:
-		status .req r3
-		ldr status,[mailbox,#0x18]
-
-		tst status,#0x80000000
-		.unreq status
-		bne wait1$
-
-	add value,channel
-	.unreq channel
-	
-	str value,[mailbox,#0x20]
-	.unreq value
-	.unreq mailbox
-	pop {pc}
-
-/* NEW
 * MailboxRead returns the current value in the mailbox addressed to a channel
 * given in the low 4 bits of r0, as the top 28 bits of r0.
 * C++ Signature: u32 MailboxRead(u8 channel)
 */
 .globl MailboxRead
 MailboxRead: 
-	cmp r0,#15
-	movhi pc,lr
-
-	channel .req r1
-	mov channel,r0
-	push {lr}
+	and r3,r0,#0xf
+	mov r2,lr
 	bl GetMailboxBase
-	mailbox .req r0
+	mov lr,r2
 	
 	rightmail$:
-		wait2$:
-			status .req r2
-			ldr status,[mailbox,#0x18]
+		wait1$: 
+			ldr r2,[r0,#24]
+			tst r2,#0x40000000
+			bne wait1$
 			
-			tst status,#0x40000000
-			.unreq status
-			bne wait2$
-		
-		mail .req r2
-		ldr mail,[mailbox,#0]
-
-		inchan .req r3
-		and inchan,mail,#0b1111
-		teq inchan,channel
-		.unreq inchan
+		ldr r1,[r0,#0]
+		and r2,r1,#0xf
+		teq r2,r3
 		bne rightmail$
-	.unreq mailbox
-	.unreq channel
 
-	and r0,mail,#0xfffffff0
-	.unreq mail
-	pop {pc}
+	and r0,r1,#0xfffffff0
+	mov pc,lr
+
+/* NEW
+* MailboxWrite writes the value given in the top 28 bits of r0 to the channel
+* given in the low 4 bits of r1.
+* C++ Signature: void MailboxWrite(u32 value, u8 channel)
+*/
+.globl MailboxWrite
+MailboxWrite: 
+	and r2,r1,#0xf
+	and r1,r0,#0xfffffff0
+	orr r1,r2
+	mov r2,lr
+	bl GetMailboxBase
+	mov lr,r2
+
+	wait2$: 
+		ldr r2,[r0,#24]
+		tst r2,#0x80000000
+		bne wait2$
+
+	str r1,[r0,#32]
+	mov pc,lr
