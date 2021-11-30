@@ -136,7 +136,8 @@ Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kerne
 
 ## Next Steps:
  * Follow Screen Tutorial and test to see if it actually works - Joseph
- * Look into File Managment - John
+ * Fix Boot Issues - John - Primary
+ * Look into File Managment - John - Secondary
 
 [OK01]: https://img.shields.io/badge/Version-OK01-blue
 [OK02]: https://img.shields.io/badge/Version-OK02-blue
