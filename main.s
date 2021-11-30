@@ -2,8 +2,8 @@
 *	main.s
 *	 by Alex Chadwick
 *
-*	A sample assembly code implementation of the screen01 operating system, that 
-*	creates a frame buffer and continually renders to it.
+*	A sample assembly code implementation of the screen02 operating system, that 
+*	renders pseudo random lines to the screen.
 *
 *	main.s contains the main operating system, and IVT code.
 ******************************************************************************/
@@ -43,7 +43,7 @@ main:
 */
 	mov sp,#0x8000
 
-/* NEW
+/* 
 * Setup the screen.
 */
 	mov r0,#1024
@@ -51,7 +51,7 @@ main:
 	mov r2,#16
 	bl InitialiseFrameBuffer
 
-/* NEW
+/* 
 * Check for a failed frame buffer.
 */
 	teq r0,#0
@@ -74,34 +74,52 @@ main:
 	mov fbInfoAddr,r0
 
 /* NEW
-* Set pixels forevermore. 
+* Let our drawing method know where we are drawing to.
 */
+	bl SetGraphicsAddress
+	
+	lastRandom .req r7
+	lastX .req r8
+	lastY .req r9
+	colour .req r10
+	x .req r5
+	y .req r6
+	mov lastRandom,#0
+	mov lastX,#0
+	mov r9,#0
+	mov r10,#0
 render$:
-	fbAddr .req r3
-	ldr fbAddr,[fbInfoAddr,#32]
+	mov r0,lastRandom
+	bl Random
+	mov x,r0
+	bl Random
+	mov y,r0
+	mov lastRandom,r0
 
-/* NEW
-* We will use r0 to keep track of the current colour.
-*/
-	colour .req r0
-	y .req r1
-	mov y,#768
-	drawRow$:
-		x .req r2
-		mov x,#1024
-		drawPixel$:
-			strh colour,[fbAddr]
-			add fbAddr,#2
-			sub x,#1
-			teq x,#0
-			bne drawPixel$
+	mov r0,colour
+	add colour,#1
+	lsl colour,#16
+	lsr colour,#16
+	bl SetForeColour
+		
+	mov r0,lastX
+	mov r1,lastY
+	lsr r2,x,#22
+	lsr r3,y,#22
 
-		sub y,#1
-		add colour,#1
-		teq y,#0
-		bne drawRow$
+	cmp r3,#768
+	bhs render$
+	
+	mov lastX,r2
+	mov lastY,r3
+	 
+	bl DrawLine
 
 	b render$
 
-	.unreq fbAddr
-	.unreq fbInfoAddr
+	.unreq x
+	.unreq y
+	.unreq lastRandom
+	.unreq lastX
+	.unreq lastY
+	.unreq colour
