@@ -2,13 +2,13 @@
 *	random.s
 *	 by Alex Chadwick
 *
-*	A sample assembly code implementation of the screen02 operating system.
+*	A sample assembly code implementation of the screen03 operating system.
 *	See main.s for details.
 *
 *	random.s contains code to do with generating pseudo random numbers.
 ******************************************************************************/
 
-/* NEW
+/*
 * Random is a function with an input of the last number it generated, and an 
 * output of the next number in a pseduo random number sequence.
 * C++ Signature: u32 Random(u32 lastValue);
@@ -27,4 +27,3 @@ Random:
 	
 	.unreq a
 	mov pc,lr
-
