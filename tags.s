@@ -2,7 +2,7 @@
 *	tags.s
 *	 by Alex Chadwick
 *
-*	A sample assembly code implementation of the screen03 operating system.
+*	A sample assembly code implementation of the screen04 operating system.
 *	See main.s for details.
 *
 *	tags.s contains code to do with reading the ARM Linux boot tags.
