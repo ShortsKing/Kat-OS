@@ -42,6 +42,7 @@ Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kerne
  * [Raspberry Pi 0 Specs](https://cdn.sparkfun.com/assets/learn_tutorials/6/7/6/PiZero_1.pdf)
  * [Baking Pi - Operating Systems Development](https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/downloads.html)
  * [ARM reference](https://www.keil.com/support/man/docs/armasm/armasm_dom1361289850039.htm)
+ * [./ raspberry-pi-os](https://s-matyukevich.github.io/raspberry-pi-os/docs/lesson01/rpi-os.html)
 
 ## Assembly Commands Learned:
 * **ldr**  
