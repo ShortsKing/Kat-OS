@@ -2,7 +2,7 @@
 *	drawing.s
 *	 by Alex Chadwick
 *
-*	A sample assembly code implementation of the screen03 operating system.
+*	A sample assembly code implementation of the screen04 operating system.
 *	See main.s for details.
 *
 *	drawing.s contains code to do with drawing shapes to the screen.
@@ -184,6 +184,8 @@ DrawCharacter:
 	charAddr .req r6
 
 	cmp r0,#0x7F
+	movhi r0,#0
+	movhi r1,#0
 	movhi pc,lr
 
 	mov x,r1
@@ -210,8 +212,7 @@ DrawCharacter:
 			mov r1,y
 			bl DrawPixel
 
-			teq bit,#0
-			bne charPixelLoop$
+			b charPixelLoop$
 		charPixelLoopEnd$:
 
 		.unreq bit
@@ -239,7 +240,7 @@ DrawCharacter:
 * DrawString renders the image for a string of characters given in r0 (length
 * in r1) to the screen, with to left corner given by (r2,r3). Obeys new line
 * and horizontal tab characters.
-* C++ Signature: u32x2 DrawString(char* string, u32 length, u32 x, u32 y);
+* C++ Signature: void DrawString(char* string, u32 length, u32 x, u32 y);
 */
 .globl DrawString
 DrawString:
