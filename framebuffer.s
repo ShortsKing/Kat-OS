@@ -2,7 +2,7 @@
 *	frameBuffer.s
 *	 by Alex Chadwick
 *
-*	A sample assembly code implementation of the screen03 operating system.
+*	A sample assembly code implementation of the screen04 operating system.
 *	See main.s for details.
 *
 *	frameBuffer.s contains code that creates and manipulates the frame buffer.
