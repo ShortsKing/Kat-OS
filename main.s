@@ -2,8 +2,8 @@
 *	main.s
 *	 by Alex Chadwick
 *
-*	A sample assembly code implementation of the screen03 operating system, that 
-*	renders text to the screen
+*	A sample assembly code implementation of the screen04 operating system, that 
+*	renders formatted text to the screen.
 *
 *	main.s contains the main operating system, and IVT code.
 ******************************************************************************/
@@ -78,23 +78,41 @@ main:
 */
 	bl SetGraphicsAddress
 	
-/* NEW
-* Find the cmdline tag.
-*/
-	mov r0,#9
-	bl FindTag
-
-/* NEW
-* Draw our command line.
-*/
-	ldr r1,[r0]
-	lsl r1,#2
-	sub r1,#8
-	add r0,#8
-
+	mov r4,#0
+loop$:
+	ldr r0,=format
+	mov r1,#formatEnd-format
+	ldr r2,=formatEnd
+	lsr r3,r4,#4
+	push {r3}
+	push {r3}
+	push {r3}
+	push {r3}
+	bl FormatString
+	add sp,#16
+	
+	mov r1,r0
+	ldr r0,=formatEnd
 	mov r2,#0
-	mov r3,#0
+	mov r3,r4
+	
+	cmp r3,#768-16
+	subhi r3,#768
+	addhi r2,#256
+	cmp r3,#768-16
+	subhi r3,#768
+	addhi r2,#256
+	cmp r3,#768-16
+	subhi r3,#768
+	addhi r2,#256
+
+
 	bl DrawString
 
-loop$:
+	add r4,#16
 	b loop$
+
+.section .data
+format:
+.ascii "%d=0b%b=0x%x=0%o='%c'"
+formatEnd:
