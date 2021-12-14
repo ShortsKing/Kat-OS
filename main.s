@@ -17,7 +17,7 @@
 * allows simulators to run the elf, and also stops us getting a linker warning
 * about having no entry point. 
 */
-.section .init
+.section ".text.boot"
 .globl _start
 _start:
 
