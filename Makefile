@@ -1,64 +1,31 @@
-###############################################################################
-#	makefile
-#	 by Alex Chadwick
-#
-#	A makefile script for generation of raspberry pi kernel images.
-###############################################################################
+ARMGNU ?= armv6-rpi-linux-gnueabi
 
-# The toolchain to use. arm-none-eabi works, but there does exist 
-# arm-bcm2708-linux-gnueabi.
-ARMGNU ?= arm-none-eabi
+COPS = -Wall -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only
+ASMOPS = -Iinclude 
 
-# The intermediate directory for compiled object files.
-BUILD = build/
+BUILD_DIR = build
+SRC_DIR = src
 
-# The directory in which source files are stored.
-SOURCE = source/
+all : kernel8.img
 
-# The name of the output file to generate.
-TARGET = kernel.img
+clean :
+    rm -rf $(BUILD_DIR) *.img 
 
-# The name of the assembler listing file to generate.
-LIST = kernel.list
+$(BUILD_DIR)/%_c.o: $(SRC_DIR)/%.c
+    mkdir -p $(@D)
+    $(ARMGNU)-gcc $(COPS) -MMD -c $< -o $@
 
-# The name of the map file to generate.
-MAP = kernel.map
+$(BUILD_DIR)/%_s.o: $(SRC_DIR)/%.S
+    $(ARMGNU)-gcc $(ASMOPS) -MMD -c $< -o $@
 
-# The name of the linker script to use.
-LINKER = kernel.ld
+C_FILES = $(wildcard $(SRC_DIR)/*.c)
+ASM_FILES = $(wildcard $(SRC_DIR)/*.S)
+OBJ_FILES = $(C_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%_c.o)
+OBJ_FILES += $(ASM_FILES:$(SRC_DIR)/%.S=$(BUILD_DIR)/%_s.o)
 
-# The names of all object files that must be generated. Deduced from the 
-# assembly code files in source.
-OBJECTS := $(patsubst $(SOURCE)%.s,$(BUILD)%.o,$(wildcard $(SOURCE)*.s))
+DEP_FILES = $(OBJ_FILES:%.o=%.d)
+-include $(DEP_FILES)
 
-# Rule to make everything.
-all: $(TARGET) $(LIST)
-
-# Rule to remake everything. Does not include clean.
-rebuild: all
-
-# Rule to make the listing file.
-$(LIST) : $(BUILD)output.elf
-	$(ARMGNU)-objdump -d $(BUILD)output.elf > $(LIST)
-
-# Rule to make the image file.
-$(TARGET) : $(BUILD)output.elf
-	$(ARMGNU)-objcopy $(BUILD)output.elf -O binary $(TARGET) 
-
-# Rule to make the elf file.
-$(BUILD)output.elf : $(OBJECTS) $(LINKER)
-	$(ARMGNU)-ld --no-undefined $(OBJECTS) -Map $(MAP) -o $(BUILD)output.elf -T $(LINKER)
-
-# Rule to make the object files.
-$(BUILD)%.o: $(SOURCE)%.s $(BUILD)
-	$(ARMGNU)-as -I $(SOURCE) $< -o $@
-
-$(BUILD):
-	mkdir $@
-
-# Rule to clean files.
-clean : 
-	-rm -rf $(BUILD)
-	-rm -f $(TARGET)
-	-rm -f $(LIST)
-	-rm -f $(MAP)
+kernel8.img: $(SRC_DIR)/linker.ld $(OBJ_FILES)
+    $(ARMGNU)-ld -T $(SRC_DIR)/linker.ld -o $(BUILD_DIR)/kernel8.elf  $(OBJ_FILES)
+    $(ARMGNU)-objcopy $(BUILD_DIR)/kernel8.elf -O binary kernel8.img
