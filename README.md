@@ -33,7 +33,7 @@ Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kerne
 
 ## Sources
  * [Programming the BMC2835 SOC](https://www.glennklockwood.com/embedded/bmc2835-gpio.html)
- * [BMC2835 Datasheet](https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals.pdf)
+ * [BCM2835 Datasheet](https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals.pdf)
    * Page 65 - EMMC Memory Management
    * Page 89 - GPIO
    * Page 109 - Interrupts
