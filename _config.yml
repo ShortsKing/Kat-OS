@@ -1,3 +1,4 @@
 theme: jekyll-theme-minimal
 safe: true
 timezone: America/Winnipeg
+unpublished: true
