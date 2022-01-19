@@ -1,4 +1,4 @@
-# Cat-OS
+# Kat-OS
 ![Version][Screen04] ![USB][NoUSB]<br>
 an operating system for ARMv7l architechture, or, more specifically, the raspberry pi. for contributers, it is required that you place a comment on every line of code, so that we know what is happening. This Operating system is dedacated to the katos katos
 
