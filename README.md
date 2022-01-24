@@ -9,7 +9,7 @@ for every ASM file.
 ex: `as -o main.o main.s`  
 then, we link the all the object files with the following command:
 `ld -o <progname> <objectFile1>.o <objectFile2>.o <etc.>.o`
-ex: `ld -o Kat-OS main.o screen.o background.o  division.o`
+ex: `ld -o Kat-OS main.o screen.o file.o  division.o`
 That should produce a linux executable ready to be run with `./progName`, ex. `./Kat-OS`. once the executable is ready, put it on top of the linux kernel and run. (Not sure how to do the last step? We arent either. Email oexisinc@gmail.com if you know!)
 
 ## What is Happening When the OS is Run?
