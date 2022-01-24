@@ -2,3 +2,4 @@ theme: jekyll-theme-minimal
 safe: true
 timezone: America/Winnipeg
 unpublished: true
+favicon: "/favicon.ico"
