@@ -1,3 +1,5 @@
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
 ## Kat-OS
 ![Version][Screen04] ![USB][NoUSB]<br>
 an operating system for the katos-katos. for contributers, it is required that you place a comment on every line of code, so that we know what is happening.
