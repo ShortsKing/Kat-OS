@@ -2,7 +2,7 @@
 
 ## Kat-OS
 ![Version][Screen04] ![USB][NoUSB]<br>
-an operating system for the katos-katos. for contributers, it is required that you place a comment on every line of code, so that we know what is happening.
+a hopefully eventually operating system for the katos-katos, or rather an ARM program that emulates an operating system for your cat. for contributers, it is required that you place a comment on every line of code, so that we know what is happening.
 
 ## File Structure
 The file structure for this project looks like this: <br>
