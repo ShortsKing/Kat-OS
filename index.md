@@ -55,6 +55,7 @@ Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kerne
 
 ### Kat-OS
 ##### For the Katos-Katos
+check out the developer nation [global survey}(https://developereconomics.net?member_id=mDPfdlI4&lang=en&locale=en)
 [OK01]: https://img.shields.io/badge/Version-OK01-blue
 [OK02]: https://img.shields.io/badge/Version-OK02-blue
 [OK03]: https://img.shields.io/badge/Version-OK03-blue
