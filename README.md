@@ -19,13 +19,7 @@ That should produce a linux executable ready to be run with `./progName`, ex. `.
 3. The stage 3 loader then reads `config.txt` which acts a bit like a BIOS configuration configures the GPU and ARM processor loads `kernel.img` and releases the ARM processor to begin executing it
 
 ## Sources
- * [Programming the BMC2835 SOC](https://www.glennklockwood.com/embedded/bmc2835-gpio.html)
- * [BCM2835 Datasheet](https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals.pdf)
-   * Page 65 - EMMC Memory Management
-   * Page 89 - GPIO
-   * Page 109 - Interrupts
-   * Pages 172 and 196 - Timer
-   * Page 200 - USB
+ * [Building the Linux Kernel](https://www.raspberrypi.com/documentation/computers/linux_kernel.html#building-the-kernel-locally)
  * [Raspberry Pi 0 Specs](https://cdn.sparkfun.com/assets/learn_tutorials/6/7/6/PiZero_1.pdf)
  * [Baking Pi - Operating Systems Development](https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/downloads.html)
  * [ARM reference](https://www.keil.com/support/man/docs/armasm/armasm_dom1361289850039.htm)
@@ -34,13 +28,12 @@ That should produce a linux executable ready to be run with `./progName`, ex. `.
  * [RPi Assembly Language (Book)](https://www.brucesmith.info/rosal.html)
 
 ## Next Steps:
- * Figure out how to do division without division
  * make screen library (low res)
  * figure out how to put the program on top of linux kernel
+ * build the linux kernel
 
 ### Kat-OS
 ##### For the Katos-Katos
-check out the developer nation [survey](https://developereconomics.net?member_id=mDPfdlI4&lang=en&locale=en)  
 
 [OK01]: https://img.shields.io/badge/Version-OK01-blue
 [OK02]: https://img.shields.io/badge/Version-OK02-blue
