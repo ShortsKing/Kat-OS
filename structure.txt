@@ -1,19 +1,14 @@
 structure
 
 Bootcode.bin  
-    ┃  
-    ┃  
+    |
 Start.elf  
-    ┃  
-    ┃  
+    |
 Grub Bootloader  
-    ┃  
-    ┃  
+    |
 Linux Kernel  
-    ┃  
-    ┃  
+    |
 /Kat-OS/Init  
-    ┃  
-    ┣━━━━━━━┳━━━━━━━━━━━━┓
-    ┃            ┃                    ┃
-/Kat-OS/UI    /Kat-OS/Background    /Kat-OS/Programs
+    |______________________________________
+    |                |                     |
+/Kat-OS/Shell    /Kat-OS/Background    /Kat-OS/Programs
