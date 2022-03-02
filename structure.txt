@@ -9,6 +9,6 @@ Grub Bootloader
 Linux Kernel  
     |
 /Kat-OS/Init  
-    |______________________________________
-    |                |                     |
-/Kat-OS/Shell    /Kat-OS/Background    /Kat-OS/Programs
+    |______________________________________________________
+    |                |                     |               |
+/Kat-OS/Shell    /Kat-OS/Kat-OS    /Kat-OS/Programs    /Kat-OS/Permissions
