@@ -11,4 +11,4 @@ Linux Kernel
 /Kat-OS/Init  
     |______________________________________________________
     |                |                     |               |
-/Kat-OS/Shell    /Kat-OS/Kat-OS    /Kat-OS/Programs    /Kat-OS/Permissions
+/Kat-OS/Shell    /Kat-OS/Kat-OS    /Kat-OS/Programs    /Kat-OS/User
