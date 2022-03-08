@@ -2,57 +2,19 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void Kat-OS() {
-   pid_t pid;
+void exec(char path[], ) {
+   pid_t pid; //i think pid_t relies on sys/types.h? just a guess, based on the name (types.h)
    char *const parmList[] = {NULL};
 
    if ((pid = fork()) == -1) printf("fork error\nKat-OS has been Rendered Inoperable\n\nPlease Cut Power"); //Check if fork failed
    else if (pid == 0) {
-      execv("/Kat-OS/Kat-OS", parmList); 
-      printf("Return not expected. Must be an execv error\nKat-OS has been Rendered Inoperable\n\nPlease Cut Power");
+      execv(path, parmList); //runs main() function in program located at $path with arguments $parmList, which should be a NULL terminated string
+      printf("Return not expected. Must be an execv error\nKat-OS has been Rendered Inoperable\n\nPlease Cut Power"); //This will only run if execv() failed, because execv() should terminate the existing process
    }
 }
-
-void Shell() {
-   pid_t pid;
-   char *const parmList[] = {NULL};
-
-   if ((pid = fork()) == -1) printf("fork error\nKat-OS has been Rendered Inoperable\n\nPlease Cut Power"); //Check if fork failed
-   else if (pid == 0) {
-      execv("/Kat-OS/Shell", parmList); 
-      printf("Return not expected. Must be an execv error\nKat-OS has been Rendered Inoperable\n\nPlease Cut Power");
-   }
-}
-
-void User() {
-   pid_t pid;
-   char *const parmList[] = {NULL};
-
-   if ((pid = fork()) == -1) printf("fork error\nKat-OS has been Rendered Inoperable\n\nPlease Cut Power"); //Check if fork failed
-   else if (pid == 0) {
-      execv("/Kat-OS/User", parmList); 
-      printf("Return not expected. Must be an execv error\nKat-OS has been Rendered Inoperable\n\nPlease Cut Power");
-   }
-}
-
-void Programs() {
-   pid_t pid;
-   char *const parmList[] = {NULL};
-
-   if ((pid = fork()) == -1) printf("fork error\nKat-OS has been Rendered Inoperable\n\nPlease Cut Power"); //Check if fork failed
-   else if (pid == 0) {
-      execv("/Kat-OS/Programs", parmList); 
-      printf("Return not expected. Must be an execv error\nKat-OS has been Rendered Inoperable\n\nPlease Cut Power");
-   }
-}
-
 void Init() {
-   Kat-OS();
-   Shell();
-   User();
-   Programs();
+   exec();
 }
-
 main() {
    Init();
 }
