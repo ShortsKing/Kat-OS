@@ -14,6 +14,9 @@ void exec(char path[], ) {
 }
 void Init() {
    exec();
+   exec();
+   exec();
+   exec();
 }
 main() {
    Init();
