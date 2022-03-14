@@ -18,17 +18,17 @@ void exec(char path[], ) {
    }
 }
 void Init() {
-   exec(/Kat-OS/Kat-OS);
-   exec(/Kat-OS/User);
-   exec(/Kat-OS/Shell);
-   exec(/Kat-OS/Programs);
+   exec(/Kat-OS/Kat-OS); //execute /Kat-OS/Kat-OS
+   exec(/Kat-OS/User); //execute /Kat-OS/User
+   exec(/Kat-OS/Shell); // ...
+   exec(/Kat-OS/Programs); // ...
 }
 main() {
-   Init();
-   kill(getpid());
-   printf("An Error has Occured at the End of Init.C");
-   return 0;
-   printf("Init.c has Failed to Terminate");
+   Init(); //Call Init()
+   kill(getpid()); //Kill the current process
+   printf("An Error has Occured at the End of Init.C"); //this shouldnt run, and its clear there has been an error if it doesnt work
+   return 0; //last resort attempt to kill the program
+   printf("Init.c has Failed to Terminate"); //Init.c gives up trying to commit suicide
 }
 
 // Init.c is DONE!!
