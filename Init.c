@@ -1,3 +1,8 @@
+/* Init is first program launched by the kernel, compiled from Init.c
+ * You can change the first program run by the kernel by adding "init=/location/of/init" 
+ * Init.c launches four executable which manage the four sectors of the operating system from this point on
+ */
+
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -13,11 +18,17 @@ void exec(char path[], ) {
    }
 }
 void Init() {
-   exec();
-   exec();
-   exec();
-   exec();
+   exec(/Kat-OS/Kat-OS);
+   exec(/Kat-OS/User);
+   exec(/Kat-OS/Shell);
+   exec(/Kat-OS/Programs);
 }
 main() {
    Init();
+   kill(getpid());
+   printf("An Error has Occured at the End of Init.C");
+   return 0;
+   printf("Init.c has Failed to Terminate");
 }
+
+// Init.c is DONE!!
