@@ -6,24 +6,31 @@ int main() { /*initializes the file*/
   char str[100]; /*creates a 100 character variable*/
   
   printf("please enter a command :"); /*asks you to enter a command*/
-  gets( str );
+  gets( str ); //saves your input to str
   
   printf("\nyou entered: "); /*returns what you entered*/
-  puts( str );
+  puts( str ); 
   
-  DIR *folder;
-
-  folder = opendir(str);
-  if(folder == NULL)
+  DIR *folder; //initialises folder
+  struct dirent *entry; //loads file info into entry
+  int files = 0; //creates a new variable "files" and sets it to 0
+  
+  folder = opendir(str); //opens the specified directory
+  if(folder == NULL) //if no directory can be found, program quits
   {
-  puts("Unable to read directory");
+  perror("Unable to read directory");
       return(1);
   }
-  else
+  
+  while( (entry=readdir(folder)) ) //sees if the directory has any entries and if so, prints their names to the screen
   {
-      puts("Directory is opened!");
+    files++;
+    printf("File %3d: %s/n",
+           files,
+           entry->d_name
+          );
   }
-  closedir(folder);
+  closedir(folder); //closes the directory
 
   return(0);
 }
