@@ -4,8 +4,7 @@
 #include <dirent.h> /*adds dirent to file*/
 int main() { /*initializes the file*/
   char str[100]; /*creates a 100 character variable*/
-  char *args[]={"./main",NULL};
-  open =
+  char *args[]={"main",NULL};
   
   printf("please enter a command :"); /*asks you to enter a command*/
   gets( str ); //saves your input to str
@@ -14,14 +13,12 @@ int main() { /*initializes the file*/
   int files = 0; //creates a new variable "files" and sets it to 0
   
   folder = opendir(str); //opens the specified directory
-  if(folder == NULL) //if no directory can be found, program quits
-  {
+  if(folder == NULL) { //if no directory can be found, program quits
   perror("Unable to read directory");
       return(1);
   }
   
-  while( (entry=readdir(folder)) ) //sees if the directory has any entries and if so, prints their names to the screen
-  {
+  while( (entry=readdir(folder)) ) { //sees if the directory has any entries and if so, prints their names to the screen
     if (fork() == 0); //creates a child program to execute a file
       execvp(args[0],args); //opens the file
     else
