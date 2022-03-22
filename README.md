@@ -16,7 +16,7 @@ That should produce a linux executable ready to be run with `./progName`, ex. `.
 1. The BMC2835 SOC (specifically, the VideoCore IV GPU in it) loads the stage 1 boot loader from an on-chip ROM
     The stage 1 loader knows how to talk to the SD card controller and read FAT16/FAT32 file systems. It looks for a file called `bootcode.bin` on the first partition of the SD card, and loads it. `bootcode.bin` is the stage 2 boot loader.
 2. The stage 2 loader loads `start.elf` from the SD card's first partition. This is the stage 3 boot loader.
-3. The stage 3 loader then reads `config.txt` which acts a bit like a BIOS configuration configures the GPU and ARM processor loads `kernel.img` and releases the ARM processor to begin executing it
+3. The stage 3 loader then reads `config.txt`, which acts a bit like a BIOS configuration file, configures the GPU, loads `kernel.img` and releases the ARM processor to begin executing it
 4. kernel.img looks at CMD
 
 ## Sources
