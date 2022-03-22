@@ -9,10 +9,6 @@ int main() { /*initializes the file*/
   
   printf("please enter a command :"); /*asks you to enter a command*/
   gets( str ); //saves your input to str
-  
-  printf("\nyou entered: "); /*returns what you entered*/
-  puts( str ); 
-  
   DIR *folder; //initialises folder
   struct dirent *entry; //loads file info into entry
   int files = 0; //creates a new variable "files" and sets it to 0
@@ -28,7 +24,6 @@ int main() { /*initializes the file*/
   {
     if (fork() == 0); //creates a child program to execute a file
       execvp(args[0],args); //opens the file
-      if (
     else
       closedir(folder); //closes the directory
 
