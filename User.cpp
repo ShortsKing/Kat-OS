@@ -1,5 +1,6 @@
 #include <iostream>
 #include <unistd.h>
+#include <cctype>
 using namespace std;
 
 unsigned int second = 1000000;
@@ -10,5 +11,5 @@ int main() {
 	usleep(5 * second); //sleeps for 5 second
 	cout << "JUST KIDDING!!\n";
 	cout << "Cat or Human? (H/C): ";
-	cin >> CatOrHuman;
+	cin >> toupper(CatOrHuman);
 }
