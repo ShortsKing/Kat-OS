@@ -1,7 +1,7 @@
-#include <iostream>
+#include <sys/types.h>
 #include <unistd.h>
-#include <cctype>
-using namespace std;
+#include <stdio.h>
+#include <time.h>
 
 void exec(char path[], ) {
    pid_t pid; //i think pid_t relies on sys/types.h? just a guess, based on the name (types.h)
@@ -14,19 +14,35 @@ void exec(char path[], ) {
    }
 }
 
-unsigned int second = 1000000;
+void delay(int number_of_seconds)
+{
+    // Converting time into milli_seconds
+    int milli_seconds = 1000 * number_of_seconds;
+  
+    // Storing start time
+    clock_t start_time = clock();
+  
+    // looping till required time is not achieved
+    while (clock() < start_time + milli_seconds)
+        ;
+}
+
 char CatOrHuman = NULL
 
 int main() {
-	cout << "Hello World\n";
-	usleep(5 * second); //sleeps for 5 second
-	cout << "JUST KIDDING!!\n";
-	cout << "Cat or Human? (H/C): ";
-	cin >> tolower(CatOrHuman);
+	printf("Hello World\n");
+	delay(5);
+	printf("JUST KIDDING!!\n");
+	printf("Cat or Human? (H/C): ");
+	scanf("%c", CatOrHuman);
 	switch(CatOrHuman) {
 		case 'c':
-			execv(kittyEXE);
+			exec("kitty");
+		case 'C':
+			exec("kitty");
 		case 'h':
-			fork() etc etc etc
+			exec("");
+		case 'H':
+			exec("");
 	}
 }
