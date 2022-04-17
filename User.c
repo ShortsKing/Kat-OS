@@ -31,18 +31,18 @@ char CatOrHuman = NULL
 
 int main() {
 	printf("Hello World\n");
-	delay(5);
+	delay(5); //wait 5 seconds for the joke to set in ;)
 	printf("JUST KIDDING!!\n");
 	printf("Cat or Human? (H/C): ");
 	scanf("%c", CatOrHuman);
 	switch(CatOrHuman) {
 		case 'c':
-			exec("kitty");
+			exec("Kitty");
 		case 'C':
-			exec("kitty");
+			exec("Kitty");
 		case 'h':
-			exec("");
+			exec("Human");
 		case 'H':
-			exec("");
+			exec("Human");
 	}
 }
