@@ -3,7 +3,7 @@
 An operating system for the Katos-Katos.
 
 ## Installing
-To install, go to our releases pages, and extract RPix.xxx.zip (where x.xxx is Pi_Model.Kat-OS_Version) to an SD card and insert into your Pi. if you dont have a Pi, your computer is not supported yet. you can put an issue with your computer model as a future support suggestion. i doubt anyone will actually want Kat-OS so far, but go ahead. Building instructions should be released within 3 months. or whenever we finish programming Kat-OS.
+To install, go to our releases pages, and extract RPix.xxx.zip (where x.xxx is Pi_Model.Kat-OS_Version) to an SD card and insert into your Pi. if you dont have a Pi, your computer is not supported yet. you can put an issue tagged "enhancment" with your computer model as a future support suggestion. i doubt anyone will actually want Kat-OS so far, but go ahead. Building instructions should be released within 3 months. or whenever we finish programming Kat-OS.
 
 ## Sources
  * [Building the Linux Kernel](https://www.raspberrypi.com/documentation/computers/linux_kernel.html#building-the-kernel-locally)
