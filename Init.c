@@ -22,6 +22,7 @@ void Init() {
    exec(/Kat-OS/User); //execute /Kat-OS/User
    exec(/Kat-OS/Shell); // ...
    exec(/Kat-OS/Programs); // ...
+   exec(/Kat-OS/read);//you have no idea how alone you are garfeild
 }
 main() {
    Init(); //Call Init()
