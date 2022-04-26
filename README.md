@@ -1,5 +1,5 @@
 ## Kat-OS
-![Version][Screen04] ![USB][NoUSB]<br>
+![Version][Screen04]<br>
 An operating system for the Katos-Katos.
 
 ## Installing
@@ -21,18 +21,3 @@ To install, go to our releases pages, and extract RPix.xxx.zip (where x.xxx is P
 
 ### Kat-OS
 ##### For the Katos-Katos
-
-[OK01]: https://img.shields.io/badge/Version-OK01-blue
-[OK02]: https://img.shields.io/badge/Version-OK02-blue
-[OK03]: https://img.shields.io/badge/Version-OK03-blue
-[OK04]: https://img.shields.io/badge/Version-OK04-blue
-[OK05]: https://img.shields.io/badge/Version-OK05-blue
-[Screen01]: https://img.shields.io/badge/Version-Screen01-blue
-[Screen02]: https://img.shields.io/badge/Version-Screen02-blue
-[Screen03]: https://img.shields.io/badge/Version-Screen03-blue
-[Screen04]: https://img.shields.io/badge/Version-Screen04-blue
-[Input01]: https://img.shields.io/badge/Version-Input01-blue
-[Input02]: https://img.shields.io/badge/Version-Input02-blue
-
-[NoUSB]: https://img.shields.io/badge/USB-No-brightgreen
-[USB]: https://img.shields.io/badge/USB-Yes-brightgreen
