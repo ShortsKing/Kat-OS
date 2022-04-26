@@ -11,7 +11,7 @@ void draw_red_circle(void) {
     //passes three arguments to initgraph
     initgraph(&gd, &gm, "");
         
-    circle(0, 0, 50);
+    circle(%d, %d, 10, rand());
     //I do not know the purpose of this
     getch();
     //or this
@@ -20,8 +20,19 @@ void draw_red_circle(void) {
 }
 
 int main() {
- //calls the function that draws the circle
-    draw_red_circle();
+    //defines x and y as two random intengers
+    int x = rand()
+    int y = rand()
+    //passes three arguments to initgraph
+    initgraph(&gd, &gm, "");
+        
+    circle(x, y, 10);
+    //I do not know the purpose of this
+    getch();
+    //or this
+    closegraph();
+    
+    
     
     return 0
 }
