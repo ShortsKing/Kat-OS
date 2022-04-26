@@ -1,5 +1,5 @@
 ## Kat-OS
-![Version][Screen04]<br>
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/ShortsKing/Kat-OS?display_name=tag&style=for-the-badge)
 An operating system for the Katos-Katos.
 
 ## Installing
