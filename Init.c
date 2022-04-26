@@ -17,12 +17,12 @@ void exec(char path[], ) {
       printf("Return not expected. Must be an execv error\nKat-OS has been Rendered Inoperable\n\nPlease Cut Power"); //This will only run if execv() failed, because execv() should terminate the existing process
    }
 }
+
 void Init() {
    exec(/Kat-OS/Kat-OS); //execute /Kat-OS/Kat-OS
    exec(/Kat-OS/User); //execute /Kat-OS/User
-   exec(/Kat-OS/Shell); // ...
-   exec(/Kat-OS/Programs); // ...
 }
+
 main() {
    Init(); //Call Init()
    kill(getpid()); //Kill the current process
