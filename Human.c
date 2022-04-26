@@ -9,6 +9,18 @@
 #include <stdio.h>
 
 char readSetting(int line;){
+  FILE* ptr;
+  char str[20000];
+  ptr = fopen("test.txt", "a+");
+ 
+  if (NULL == ptr) {
+      printf("config.txt can't be opened \n Please try rebooting");
+  }
+ 
+  printf("content of this file are \n");
+  fgets(str, 20000, ptr);
+  fclose(ptr);
+  
   
 }
 
