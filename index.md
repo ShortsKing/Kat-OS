@@ -54,7 +54,7 @@ Copy `bootcode.bin`, `start.elf`, and `config.txt`. Then, put the compiled kerne
  * Look into File Managment - John - Secondary
 
 ### Kat-OS
-##### For the Katos-Katos
+##### For the Katos-Katos.
 
 [OK01]: https://img.shields.io/badge/Version-OK01-blue
 [OK02]: https://img.shields.io/badge/Version-OK02-blue
