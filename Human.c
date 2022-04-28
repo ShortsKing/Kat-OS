@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 
-char readSetting(int line;){
+char readSetting(char setting[]; int s_len;){
   FILE* ptr;
   char str[20000];
   ptr = fopen("test.txt", "a+");
@@ -20,7 +20,10 @@ char readSetting(int line;){
   fgets(str, 20000, ptr);
   fclose(ptr);
   
-  
+  int i = 0;
+  while(true){
+    
+  }
 }
 
 int main(){
