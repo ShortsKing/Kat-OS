@@ -22,7 +22,14 @@ char readSetting(char setting[]; int s_len;){
   
   int i = 0;
   while(true){
-    
+    if(str[i] == setting[0]){
+      int x = 1; ++i;
+      while(true){
+        if(str[i] != setting[x]){ //check if
+          break;
+        } ++i; ++x;
+      }
+    } ++i;
   }
 }
 
