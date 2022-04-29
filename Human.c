@@ -5,7 +5,7 @@
  * 
  * i am currently tied up in other business. wouldn't mind some help (*COUGH* joseph *COUGH*)
  */
-
+//heeheehee
 #include <stdio.h>
 
 char readSetting(char setting[]; int s_len;){
