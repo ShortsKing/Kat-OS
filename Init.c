@@ -31,4 +31,4 @@ main() {
    printf("Init.c has Failed to Terminate"); //Init.c gives up trying to commit suicide
 }
 
-// Init.c is DONE!!
+// Compile as "Init"
