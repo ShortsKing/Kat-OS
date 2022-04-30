@@ -1,0 +1,5 @@
+//Fully Supported
+Shell/Desktop=S
+
+//Under Development
+kitty-runmode=1

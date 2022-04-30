@@ -1,3 +1,0 @@
-default human interface mode: shell
-default kitty interface mode: laser
-//please do not change which line the settings are on. the whole OS will be destroyed if you do that
