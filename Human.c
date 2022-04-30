@@ -2,10 +2,8 @@
  * executes either the shell program, or continues by forking and executing 
  * a desktop program, while also launching the applications program and 
  * managing everything from the background.
- * 
- * i am currently tied up in other business. wouldn't mind some help (*COUGH* joseph *COUGH*)
  */
-//heeheehee
+
 #include <stdio.h>
 
 void exec(char path[], ) {
@@ -58,3 +56,5 @@ int main(){
     case 'D': exec("Desk");
   }
 }
+
+//compile to "Human"
