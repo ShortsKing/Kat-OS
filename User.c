@@ -45,3 +45,5 @@ int main() {
 			exec("Human");
 	}
 }
+
+// Compile as "User"
