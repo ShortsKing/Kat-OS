@@ -57,4 +57,4 @@ int main(){
   }
 }
 
-//compile to "Human"
+// Compile as "Human"
