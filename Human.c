@@ -11,7 +11,7 @@
 char readSetting(char setting[]; int s_len;){
   FILE* ptr;
   char str[20000];
-  ptr = fopen("test.txt", "a+");
+  ptr = fopen("config.txt", "a+");
  
   if (NULL == ptr) {
       printf("config.txt can't be opened \n Please try rebooting");
@@ -25,15 +25,22 @@ char readSetting(char setting[]; int s_len;){
     if(str[i] == setting[0]){
       int x = 1; ++i;
       while(true){
-        if(str[i] != setting[x]){ //check if
-          break;
-        } ++i; ++x;
+        if(str[i] != setting[x]){break;}
+        if(s_len-1 == x){
+          ++i;
+          if(str(i) == '='){
+            ++i;
+            return str[i];
+          }
+        }
+        ++i;
+        ++x;
       }
     } ++i;
   }
 }
 
 int main(){
-  char readSetting(1);
+  char readSetting("", #);
   
 }
