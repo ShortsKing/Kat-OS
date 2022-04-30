@@ -26,3 +26,5 @@ int main() { /*initializes the file*/
 
   return(0);
 }
+
+// Compile as "Shell"
