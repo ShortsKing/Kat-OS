@@ -32,15 +32,18 @@ char readSetting(char setting[]; int s_len;){
             ++i;
             return str[i];
           }
-        }
-        ++i;
-        ++x;
+        } ++i; ++x;
       }
     } ++i;
   }
 }
 
 int main(){
-  char readSetting("", #);
-  
+  char ShellOrDesktop = readSetting("Shell/Desktop", 13);
+  switch(ShellOrDesktop){
+    case 's': 
+    case 'S':
+    case 'd':
+    case 'D':
+  }
 }
