@@ -1,5 +1,5 @@
 //Fully Supported
-Shell/Desktop=S
+Shell/Desktop=s
 
 //Under Development
 kitty-runmode=1
