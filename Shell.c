@@ -20,8 +20,8 @@ void init_shell()
     clear();
     printf("\n\n\n\n******************"
         "************************");
-    printf("\n\n\n\t****KAT-OS****");
-    printf("\n\n\t-FOR THE KOO_KOOT-");
+    printf("\n\n\n\t**** WELCOM TO KAT-OS****");
+    printf("\n\n\t-FOR THE KOOT_KOOT-");
     printf("\n\n\n\n*******************"
         "***********************");
     char* username = getenv("USER");
