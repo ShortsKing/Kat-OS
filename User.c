@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <time.h>
 
-void exec(char path[], ) {
+void exec(char path[]) {
    pid_t pid; //i think pid_t relies on sys/types.h? just a guess, based on the name (types.h)
    char *const parmList[] = {NULL};
 
@@ -14,19 +14,16 @@ void exec(char path[], ) {
    }
 }
 
-void delay(int number_of_seconds)
-{
+void delay(int number_of_seconds){
     // Converting time into milli_seconds
     int milli_seconds = 1000 * number_of_seconds;
-  
     // Storing start time
     clock_t start_time = clock();
-  
     // looping till required time is not achieved
     while (clock() < start_time + milli_seconds);
 }
 
-char CatOrHuman = NULL
+char CatOrHuman;
 
 int main() {
 	printf("Hello World\n");
