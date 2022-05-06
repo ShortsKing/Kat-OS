@@ -4,9 +4,11 @@
  * managing everything from the background.
  */
 
+#include <sys/types.h>
 #include <stdio.h>
+#include <unistd.h>
 
-void exec(char path[], ) {
+void exec(char path[]) {
    pid_t pid; //i think pid_t relies on sys/types.h? just a guess, based on the name (types.h)
    char *const parmList[] = {NULL};
 
@@ -17,27 +19,27 @@ void exec(char path[], ) {
    }
 }
 
-char readSetting(char setting[]; int s_len;){
+char readSetting(char setting[], int s_len){
   FILE* ptr;
   char str[20000];
   ptr = fopen("config.txt", "a+");
- 
+  
   if (NULL == ptr) {
       printf("config.txt can't be opened \n Please try rebooting");
   }
- 
+  
   fgets(str, 20000, ptr);
   fclose(ptr);
   
   int i = 0;
-  while(true){
+  while(1){
     if(str[i] == setting[0]){
       int x = 1; ++i;
-      while(true){
-        if(str[i] != setting[x]){break;}
-        if(s_len-1 == x){
+      while(1){
+        if(str[i] != setting[x]) break;
+        if((s_len - 1) == x){
           ++i;
-          if(str(i) == '='){
+          if(str[i] == '='){
             ++i;
             return str[i];
           }
