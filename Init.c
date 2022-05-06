@@ -5,9 +5,11 @@
 
 #include <sys/types.h>
 #include <unistd.h>
+#include <signal.h>
+#include <stdlib.h>
 #include <stdio.h>
 
-void exec(char path[], ) {
+void exec(char path[]) {
    pid_t pid; //i think pid_t relies on sys/types.h? just a guess, based on the name (types.h)
    char *const parmList[] = {NULL};
 
@@ -19,13 +21,13 @@ void exec(char path[], ) {
 }
 
 void Init() {
-   exec(/Kat-OS/Kat-OS); //execute /Kat-OS/Kat-OS
-   exec(/Kat-OS/User); //execute /Kat-OS/User
+   exec("/Kat-OS/Kat-OS"); //execute /Kat-OS/Kat-OS
+   exec("/Kat-OS/User"); //execute /Kat-OS/User
 }
 
-main() {
+int main() {
    Init(); //Call Init()
-   kill(getpid()); //Kill the current process
+   exit(0);
    printf("An Error has Occured at the End of Init.C"); //this shouldnt run, and its clear there has been an error if it doesnt work
    return 0; //last resort attempt to kill the program
    printf("Init.c has Failed to Terminate"); //Init.c gives up trying to commit suicide
