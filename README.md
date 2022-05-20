@@ -21,3 +21,5 @@ To install, go to our releases pages, and extract RPix.xxx.zip (where x.xxx is P
 
 ### Kat-OS
 ##### For the Katos-Katos
+
+Join our [Discord](https://discord.gg/7wTTChaPj8)
